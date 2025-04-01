@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrl: './footer.component.scss',
+  standalone: true
 })
 export class FooterComponent {
+  showFooter = true;
 
+  toggleFooter() {
+    this.showFooter = !this.showFooter;
+  }
+    protected readonly toolbar = toolbar;
 }

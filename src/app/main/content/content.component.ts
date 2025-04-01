@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-content',
-  imports: [RouterOutlet],
+  imports: [CommonModule],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss',
   standalone: true
 })
 export class ContentComponent {
-
+  products = ['Phone', 'Tablet', 'Laptop', 'Desktop'];
 }
