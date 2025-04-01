@@ -1,7 +1,9 @@
-<nav>
+<button (click)="toggleFooter()">Toggle Footer</button>
+
+<nav *ngIf="showFooter">
   <ul>
-    <li><a routerLink="/home_menu">Home menu</a></li>
-    <li><a routerLink="/account">Account</a></li>
-    <li><a routerLink="/settings">Settings</a></li>
+    <li>Setting</li>
+    <li>Main menu</li>
+    <li>Profile</li>
   </ul>
 </nav>

@@ -4,7 +4,6 @@ nav ul{
 }
 
 nav li{
-  display: inline-block;
   margin: 10px 0;
 }
 
@@ -12,4 +11,15 @@ nav a{
   text-decoration: none;
   color: #2346f6;
   font-weight: bold;
+}
+
+button{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #dddddd;
+  cursor: pointer;
+}
+button:hover{
+  background: #cccccc;
 }

@@ -1,1 +1,5 @@
-<router-outlet></router-outlet>
+<ul>
+  <li *ngFor="let product of products; let i = index">
+    {{ i + 1 }}. {{ product }}
+  </li>
+</ul>
