@@ -11,4 +11,9 @@ import {FooterComponent} from './footer/footer.component';
   standalone: true
 })
 export class MainComponent {
+  contentText= 'Приховано';
+
+  updateContent(newContent: string){
+    this.contentText = newContent;
+  }
 }

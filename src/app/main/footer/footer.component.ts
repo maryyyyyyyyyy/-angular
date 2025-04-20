@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 @Component({
@@ -14,5 +14,10 @@ export class FooterComponent {
   toggleFooter() {
     this.showFooter = !this.showFooter;
   }
-    protected readonly toolbar = toolbar;
+
+  @Output() contentChange: EventEmitter<string> = new EventEmitter<string>();
+
+  moreContent(content: string) {
+    this.contentChange.emit(content);
+  }
 }

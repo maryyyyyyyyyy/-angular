@@ -1,5 +1,5 @@
 <app-header></app-header>
 <div class="container">
-  <app-content></app-content>
-  <app-footer></app-footer>
+  <app-content [content]="contentText"></app-content>
+  <app-footer (contentChange)="updateContent($event)"></app-footer>
 </div>
