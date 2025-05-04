@@ -7,4 +7,29 @@
     <li>Main menu</li>
     <li>Profile</li>
   </ul>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div>
+      <label>Ім'я:</label>
+      <input type="text" formControlName="username">
+      <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
+        Ім'я обов'язкове для введення (мін. 3 символи)
+      </div>
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" formControlName="email">
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        Введіть коректний емейл
+      </div>
+    </div>
+    <div>
+      <label>Пароль:</label>
+      <input type="password" formControlName="password">
+      <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+        Пароль обов’язковий (мін. 4 символів)
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Зареєструватися</button>
+  </form>
 </nav>
