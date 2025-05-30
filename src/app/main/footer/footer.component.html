@@ -2,11 +2,11 @@
 <button (click)="moreContent('Product')">Show more</button>
 
 <nav *ngIf="showFooter">
-  <ul>
-    <li>Setting</li>
-    <li>Main menu</li>
-    <li>Profile</li>
-  </ul>
+  <nav class="footer-nav">
+    <a routerLink="/home_menu" routerLinkActive="active">Головна</a>
+    <a routerLink="/account" routerLinkActive="active">Профіль</a>
+    <a routerLink="/settings" routerLinkActive="active">Налаштування</a>
+  </nav>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
     <div>
       <label>Ім'я:</label>

@@ -1,3 +1,9 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 ul{
   display: flex;
   flex-wrap: wrap;
@@ -53,12 +59,13 @@ button:hover {
 
 .error {
   color: red;
-  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
 }
 .success {
   color: green;
-  font-weight: bold;
-  margin-top: 10px;
+  font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .container{

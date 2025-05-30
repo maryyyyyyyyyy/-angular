@@ -6,28 +6,42 @@
     <li>
       {{ content }}
     </li>
-
-    <h2>Отримані дані:</h2>
-    <div *ngIf="error" class="error">{{ error }}</div>
-
-    <!-- Виводимо список отриманих даних -->
-    <ul *ngIf="data.length > 0 && !error">
-      <li *ngFor="let item of data">
-        <strong>{{ item.title }}</strong> - {{ item.body }}
-      </li>
-    </ul>
-
-    <hr />
-
-    <h3>Надіслати новий запис</h3>
-    <form (ngSubmit)="submitForm()" #form="ngForm">
-      <input type="text" name="title" [(ngModel)]="newData.title" placeholder="Заголовок" required />
-      <br />
-      <textarea name="body" [(ngModel)]="newData.body" placeholder="Опис" required></textarea>
-      <br />
-      <button type="submit">Надіслати</button>
-    </form>
-
-    <div *ngIf="postSuccess" class="success">✅ Дані успішно надіслано!</div>
   </ul>
+
+  <h2>Отримані дані:</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <ul *ngIf="data.length > 0 && !error">
+    <li *ngFor="let item of data">
+      <strong>{{ item.title }}</strong> - {{ item.body }}
+    </li>
+  </ul>
+
+  <hr />
+
+  <h3>Надіслати новий запис</h3>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <input
+      type="text"
+      formControlName="title"
+      placeholder="Заголовок"
+    />
+    <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched" class="error">
+      ⚠️ Введіть заголовок
+    </div>
+    <br />
+
+    <textarea
+      formControlName="body"
+      placeholder="Опис"
+    ></textarea>
+    <div *ngIf="form.get('body')?.invalid && form.get('body')?.touched" class="error">
+      ⚠️ Введіть опис
+    </div>
+    <br />
+
+    <button type="submit" [disabled]="form.invalid">Надіслати</button>
+  </form>
+
+  <div *ngIf="postSuccess" class="success">✅ Дані успішно надіслано!</div>
 </div>

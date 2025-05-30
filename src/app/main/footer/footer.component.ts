@@ -1,18 +1,21 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
-  standalone: true
+  styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
   showFooter = true;
   form: FormGroup;
+
+  @Output() contentChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
@@ -25,8 +28,6 @@ export class FooterComponent {
   toggleFooter() {
     this.showFooter = !this.showFooter;
   }
-
-  @Output() contentChange: EventEmitter<string> = new EventEmitter<string>();
 
   moreContent(content: string) {
     this.contentChange.emit(content);

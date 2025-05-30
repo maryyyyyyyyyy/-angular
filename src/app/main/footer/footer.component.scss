@@ -86,3 +86,30 @@ form {
     }
   }
 }
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* відстань між посиланнями */
+  padding: 15px 0;
+  background-color: #222; /* темний фон футера */
+}
+
+.footer-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.footer-nav a.active {
+  background-color: #007bff;
+  color: white;
+}
