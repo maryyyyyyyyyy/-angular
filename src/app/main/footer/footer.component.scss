@@ -1,115 +1,127 @@
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav li {
-  margin: 10px 0;
-}
-
-nav a {
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-
-button {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background: #ddd;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #ccc;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  label {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    color: #444;
-  }
-
-  input {
-    padding: 0.6rem 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    font-size: 1rem;
-
-    &:focus {
-      outline: none;
-      border-color: #3f51b5;
-      box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
-    }
-
-    &:invalid.ng-touched {
-      border-color: #e53935;
-    }
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ng-invalid.ng-touched + div,
-  div > div {
-    font-size: 0.85rem;
-    color: #e53935;
-    margin-top: 0.3rem;
-  }
-
-  button[type='submit'] {
-    background-color: #3f51b5;
-    color: #fff;
-    padding: 0.6rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #303f9f;
-    }
-
-    &:disabled {
-      background-color: #9fa8da;
-      cursor: not-allowed;
-    }
-  }
-}
-
 .footer-nav {
   display: flex;
   justify-content: center;
-  gap: 20px; /* відстань між посиланнями */
+  gap: 20px;
   padding: 15px 0;
-  background-color: #222; /* темний фон футера */
+  background-color: #2c1a59; /* темний фіолетовий фон */
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 15px rgba(98, 0, 255, 0.6);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .footer-nav a {
-  color: #ccc;
+  color: #bb86fc;
   text-decoration: none;
-  font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 6px transparent;
 }
 
 .footer-nav a:hover {
-  background-color: #555;
-  color: white;
+  background-color: #7f39fb;
+  color: #fff;
+  box-shadow: 0 0 10px #bb86fcaa;
 }
 
 .footer-nav a.active {
-  background-color: #007bff;
-  color: white;
+  background-color: #bb86fc;
+  color: #1a0f3a;
+  box-shadow: 0 0 12px #7f39fbcc;
+}
+
+/* Форма в футері */
+form {
+  margin: 2rem auto 1rem auto;
+  max-width: 320px;
+  background-color: #3a2671;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(98, 0, 255, 0.6);
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form label {
+  font-weight: 700;
+  color: #bb86fc;
+  margin-bottom: 0.3rem;
+}
+
+form input {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #5e3fa3;
+  background-color: #2c1a59;
+  color: #ddd;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input::placeholder {
+  color: #bcaaffaa;
+}
+
+form input:focus {
+  border-color: #bb86fc;
+  box-shadow: 0 0 8px #bb86fcaa;
+  outline: none;
+  background-color: #4b3799;
+  color: #fff;
+}
+
+form div > div {
+  color: #f44336;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  text-shadow: 0 0 5px #f44336cc;
+  font-weight: 600;
+}
+
+form button[type='submit'] {
+  padding: 1rem;
+  background: linear-gradient(90deg, #7f39fb, #bb86fc);
+  color: #1a0f3a;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px #7f39fbaa;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  font-size: 1.1rem;
+}
+
+form button[type='submit']:hover:not(:disabled) {
+  background: linear-gradient(90deg, #bb86fc, #7f39fb);
+  box-shadow: 0 8px 20px #bb86fccc;
+  color: #fff;
+}
+
+form button[type='submit']:disabled {
+  background-color: #6a4fff66 !important;
+  cursor: not-allowed;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #7f39fb, #bb86fc);
+  color: #1a0f3a;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(127, 57, 251, 0.7);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  margin: 0.5rem 1rem 1rem 0; /* Відступи між кнопками */
+}
+
+button:hover {
+  background: linear-gradient(90deg, #bb86fc, #7f39fb);
+  box-shadow: 0 8px 20px rgba(187, 134, 252, 0.8);
+  color: #fff;
 }

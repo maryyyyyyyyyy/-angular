@@ -4,8 +4,9 @@
 <nav *ngIf="showFooter">
   <nav class="footer-nav">
     <a routerLink="/home_menu" routerLinkActive="active">Головна</a>
-    <a routerLink="/account" routerLinkActive="active">Профіль</a>
-    <a routerLink="/settings" routerLinkActive="active">Налаштування</a>
+    <a routerLink="/login" routerLinkActive="active">Ввійти</a>
+    <a routerLink="/register" routerLinkActive="active">Зареєструватись</a>
+    <a routerLink="/settings" routerLinkActive="active">Налаштування профіля</a>
   </nav>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
     <div>

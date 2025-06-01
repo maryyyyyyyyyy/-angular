@@ -1,20 +1,37 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
+import { Injectable, inject, PLATFORM_ID } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  private platformId = inject(PLATFORM_ID);
+  private router = inject(Router);
 
-  constructor(private router: Router) {}
-
-  canActivate(): boolean | UrlTree {
-    const token = localStorage.getItem('token'); // або sessionStorage
-    if (token) {
-      return true; // Доступ дозволено
-    } else {
-      // Перенаправлення на /auth/login
-      return this.router.parseUrl('/auth/login');
+  canActivate(): boolean {
+    if (!isPlatformBrowser(this.platformId)) {
+      return false;
     }
+
+    const userStr = localStorage.getItem('user');
+    if (!userStr) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    // Можна додати базову перевірку JSON
+    try {
+      const user = JSON.parse(userStr);
+      if (!user.email) {
+        this.router.navigate(['/login']);
+        return false;
+      }
+    } catch {
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    return true;
   }
 }

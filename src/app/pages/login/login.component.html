@@ -1,0 +1,26 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Вхід</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="email" formControlName="email" placeholder="Email" />
+      <div class="field-error" *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
+        <small *ngIf="form.get('email')?.errors?.['required']">Email обов'язковий</small>
+        <small *ngIf="form.get('email')?.errors?.['email']">Введіть коректний Email</small>
+      </div>
+
+      <input type="password" formControlName="password" placeholder="Пароль" />
+      <div class="field-error" *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
+        <small *ngIf="form.get('password')?.errors?.['required']">Пароль обов'язковий</small>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">Увійти</button>
+    </form>
+
+    <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <div class="link">
+      <a routerLink="/register">Ще не маєте акаунта? Зареєструйтесь</a>
+    </div>
+  </div>
+</div>

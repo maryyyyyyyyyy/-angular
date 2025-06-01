@@ -1,19 +1,37 @@
 import { Routes } from '@angular/router';
-import { MainComponent } from './main/main.component';
-import { ContentComponent } from './main/content/content.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AuthComponent } from './pages/auth/auth.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: MainComponent,
+    loadComponent: () => import('./main/main.component').then(m => m.MainComponent),
     children: [
-      { path: 'home_menu', component: ContentComponent },
-      { path: 'account', component: AuthComponent },
-      { path: 'settings', component: ContentComponent },
-      { path: '', redirectTo: 'home_menu', pathMatch: 'full' },
+      {
+        path: 'home_menu',
+        loadComponent: () => import('./main/content/content.component').then(m => m.ContentComponent),
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent),
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./pages/register/register.component').then(m => m.RegisterComponent),
+      },
+      {
+        path: 'settings',
+        loadComponent: () => import('./pages/settings/settings.component').then(m => m.SettingsComponent),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: '',
+        redirectTo: 'home_menu',
+        pathMatch: 'full',
+      }
     ]
   },
-  { path: '**', redirectTo: '' }
+  {
+    path: '**',
+    redirectTo: '',
+  }
 ];
